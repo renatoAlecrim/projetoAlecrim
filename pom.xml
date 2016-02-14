@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>br.unicesumar</groupId>
-    <artifactId>time05</artifactId>
+    <artifactId>projetoAlecrim</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
 
-    <name>time05</name>
+    <name>projetoAlecrim</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
