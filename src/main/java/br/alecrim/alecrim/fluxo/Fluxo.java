@@ -44,6 +44,9 @@ public class Fluxo implements Serializable{
     @CampoConsulta
     private String nomecliente;
 
+    public Fluxo() {
+    }
+
     public Fluxo(String descricao, float valor, boolean pago, Date dataEntrada, Date dataEntrega, Pessoa cliente) {
         this.descricao = descricao;
         this.valor = valor;
@@ -63,6 +66,37 @@ public class Fluxo implements Serializable{
         this.nomecliente = nomecliente;
     }
 
+    public Fluxo(String descricao, float valor, boolean pago, Date dataentrada, Date dataentrega, Pessoa cliente, String nomecliente) {
+        this.descricao = descricao;
+        this.valor = valor;
+        this.pago = pago;
+        this.dataentrada = dataentrada;
+        this.dataentrega = dataentrega;
+        this.cliente = cliente;
+        this.nomecliente = nomecliente;
+    }
+
+    public Fluxo(CriarFluxo fluxo, Pessoa cliente) {
+        this.idfluxo = fluxo.getIdfluxo();
+        this.descricao = fluxo.getDescricao();
+        this.valor = fluxo.getValor();
+        this.pago = fluxo.isPago();
+        this.dataentrada = fluxo.getDataentrada();
+        this.dataentrega = fluxo.getDataentrega();
+        this.cliente = cliente;
+        this.nomecliente = fluxo.getNomecliente();
+    }
+
+    public void alterar(CriarFluxo f, Pessoa cliente){
+        this.setCliente(cliente);
+        this.setDataentrada(f.getDataentrada());
+        this.setDataentrega(f.getDataentrega());
+        this.setDescricao(f.getDescricao());
+        this.setNomecliente(f.getNomecliente());
+        this.setPago(f.isPago());
+        this.setValor(f.getValor());
+    }
+    
     public Long getIdfluxo() {
         return idfluxo;
     }
@@ -116,6 +150,8 @@ public class Fluxo implements Serializable{
     }
 
     public void setNomecliente(String nomecliente) {
+        if(nomecliente.isEmpty())
+            nomecliente = null;
         this.nomecliente = nomecliente;
     }
     

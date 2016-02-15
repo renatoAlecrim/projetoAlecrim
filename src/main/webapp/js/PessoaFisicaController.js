@@ -57,6 +57,7 @@ module.controller("PessoaFisicaController", ["$scope", "$http", "$routeParams", 
 
         $scope.salvar = function () {
             if ($scope.isNovo) {
+                console.log($scope.fisica);
                 $http.post("/pessoa/fisica", $scope.fisica)
                         .success(function () {
                             toastr.success("Usuário cadastrado com sucesso!");

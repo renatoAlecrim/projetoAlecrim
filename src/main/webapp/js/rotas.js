@@ -151,6 +151,21 @@ module.config(function($routeProvider, $locationProvider) {
         templateUrl: 'views/eventosCadastrar.html',
         controller: 'EventosController'
     })
+    
+    //------- Rotas do Fluxo -------- 
+    .when('/Fluxo/novo', {
+        templateUrl: 'views/fluxoCadastrar.html',
+        controller: 'FluxoController'
+    }).when('/Fluxo/novo/:data', {
+        templateUrl: 'views/fluxoCadastrar.html',
+        controller: 'FluxoController'
+    }).when('/Fluxo/listar', {
+        templateUrl: 'views/fluxoListar.html',
+        controller: 'FluxoController'
+    }).when('/Fluxo/editar/:id', {
+        templateUrl: 'views/fluxoCadastrar.html',
+        controller: 'FluxoController'
+    })
     //------- Rotas de Relatorios  -------- 
     .when('/Relatorios/indios', {
         templateUrl: 'views/relatorioIndios.html',

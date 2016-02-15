@@ -1,0 +1,78 @@
+<div class="panel panel-info">
+
+    <div class="panel-heading"> 
+        <div class="panel-title" >Cadastrar novo serviço</div>
+
+        <div class="panel-options">
+            <a href="" data-rel="collapse"><i class="entypo-down-open-big"></i></a>
+        </div>
+    </div>
+    <div class="panel-body" ng-init="carregarFluxo()">
+        <form name="formFluxo" novalidate class="form-horizontal">
+
+            <div class="form-group">    
+                <label for="descricao" class="col-md-2 control-label">Descrição: </label>
+                <div class="col-md-9 col-sm-10"><input type="text" ng-model="fluxo.descricao" id="descricaoFluxo" name="descricaoFluxo" required="" class="form-control requerido" ng-minlength=3 ng-maxlength=250 ></div>
+            </div>
+
+            <div ng-show="formFluxo.descricaoFluxo.$dirty && formFluxo.descricaoFluxo.$invalid" class="alert alert-danger col-md-offset-1 col-md-11" role="alert">
+                <span ng-show="formFluxo.descricaoFluxo.$error.required">Preencha a descrição do fluxo. </span>
+                <span ng-show="formFluxo.descricaoFluxo.$error.minlength">A descrição do fluxo deve ter mais de 3 caracteres. </span>
+                <span ng-show="formFluxo.descricaoFluxo.$error.maxlength">A descrição do fluxo não pode ter mais de 250 caracteres. </span>
+            </div>
+
+            <div class="form-group">
+                <label for="peco" class="col-md-2 control-label">Preço: </label>
+                <div class="col-md-2"><input type="number" step="0.01" ng-model="fluxo.preco" id="precoFluxo" name="precoFlux" required="" class="form-control requerido" min="0" max="10000000"></div>
+                <div class="col-md-5 col-md-11" style="margin-left: 10%;">
+                    <label for="pago" class="col-md-2 control-label">Pago: </label>
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" ng-model="fluxo.pago">
+                        <label class="onoffswitch-label" for="myonoffswitch">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group">    
+                <label for="datainicial" class="col-md-2 control-label">Data de Entrada: </label>
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <input type="date" ng-model="fluxo.dataentrada" id="datainicial" name="datainicial" class="form-control requerido" required="">
+                    </div>
+                </div>                      
+                <label for="datafinal" class="col-md-2 control-label">Data de Entrega: </label>
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <input type="date" ng-model="fluxo.dataentrega"id="datafinal" name="datafinal" class="form-control requerido" required="">
+                    </div>
+                </div>
+            </div>
+            <div ng-show="!mostrarSelect" class="form-group" ng-init="carregaCliente()">
+                <label for="perfis" style="margin-top: 0.5%;" class="col-md-2 control-label">Cliente: </label>
+                <multiselect id="pessoa" name="pessoa" class="input-lg"
+                             ng-model="fluxo.cliente" 
+                             multiple="false" 
+                             ms-selected ="{{cliente.nome}}" 
+                             ms-header="*  Selecione o cliente   "
+                             options="cliente.nome for cliente in clientes" 
+                             scroll-after-rows="8">
+                </multiselect>
+            </div>
+            <div ng-show="mostrarSelect" class="form-group">    
+                <label for="descricao" class="col-md-2 control-label" style="margin-top: 0.5%;">Cliente: </label>
+                <div class="col-md-6 col-sm-10" style="margin-top: 0.5%;"><input type="text" ng-model="fluxo.nomecliente" id="nomecliente" name="nomecliente" class="form-control" ng-minlength=3 ng-maxlength=50 ></div>
+            </div>
+            <div class="form-group">    
+                <label for="mostrarSelect" class="col-md-2 control-label">Cliente sem cadastro: </label>
+                <input type="checkbox" ng-model="mostrarSelect" style="margin-top: 8px; margin-left: 15px;">
+            </div>
+        </form>
+    </div>
+</div>
+<div class="form-group">
+    <button ng-click="salvarFluxo()" ng-disabled="!formFluxo.$valid" class="btn btn-success col-md-2">Cadastrar</button>
+</div>

@@ -50,7 +50,7 @@ module.controller("PessoaJuridicaController", ["$scope", "$http", "$routeParams"
                 },
                 inscricaoEstadual:"",
                 inscricaoSuframa:"",
-                tipoPessoa: "JURIDICA"
+                tipo: "JURÍDICA"
             };
             $scope.isNovaJuridica = true;
         }

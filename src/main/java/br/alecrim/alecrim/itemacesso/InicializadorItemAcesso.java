@@ -112,6 +112,28 @@ public class InicializadorItemAcesso {
             menuEventosNovo = new ItemAcesso("Cadastrar Eventos", "#/Eventos/novo", "fa-plus", menuEventos);
             itensAcesso.add(menuEventosNovo);
         }
+        
+        //FLUXO
+        ItemAcesso menuFluxo;
+        menuFluxo = this.getItemAcesso(itensAcesso, "Gerenciar Transações", "");
+        if (menuFluxo == null) {
+            menuFluxo = new ItemAcesso("Gerenciar Transações", "", "fa-calendar", menu);
+            itensAcesso.add(menuFluxo);
+        }
+
+        ItemAcesso menuFluxoListar;
+        menuFluxoListar = this.getItemAcesso(itensAcesso, " Listar Transações", "#/Fluxo/listar");
+        if (menuFluxoListar == null) {
+            menuFluxoListar = new ItemAcesso(" Listar Transações", "#/Fluxo/listar", "fa-list-alt", menuFluxo);
+            itensAcesso.add(menuFluxoListar);
+        }
+
+        ItemAcesso menuFluxoNovo;
+        menuFluxoNovo = this.getItemAcesso(itensAcesso, "Cadastrar Transações", "#/Fluxo/novo");
+        if (menuFluxoNovo == null) {
+            menuFluxoNovo = new ItemAcesso("Cadastrar Transações", "#/Fluxo/novo", "fa-plus", menuFluxo);
+            itensAcesso.add(menuFluxoNovo);
+        }
 
         //USUARIO
         ItemAcesso menuUsuario;
